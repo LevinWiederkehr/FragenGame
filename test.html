@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wer hat die andere Frage? - Anime Edition</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        #game-container { max-width: 500px; margin: auto; }
+        .hidden { display: none; }
+        button { padding: 10px; margin: 5px; cursor: pointer; }
+        select, input { padding: 8px; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h2>Wer hat die andere Frage? - Anime Edition</h2>
+
+    <div id="setup">
+        <label>Wähle eine Kategorie:</label><br>
+        <select id="categorySelect"></select><br>
+        <button onclick="startGame()">Spiel starten</button>
+    </div>
+
+    <div id="game-container" class="hidden">
+        <p id="player-instructions">Jeder Spieler klickt auf "Frage anzeigen", um seine Frage zu sehen.</p>
+        <button onclick="assignQuestion()">Frage anzeigen</button>
+        <p id="question-display" class="hidden"></p>
+        <button onclick="nextPlayer()" class="hidden" id="next-btn">Weiter</button>
+        
+        <div id="answers" class="hidden">
+            <h3>Alle Fragen wurden gezeigt.</h3>
+            <button onclick="revealTruth()">Auflösung</button>
+        </div>
+
+        <p id="final-reveal" class="hidden"></p>
+    </div>
+
+    <script>
+        let questions = {
+        "Anime Allgemein": [
+            { "general": "Was ist dein Lieblingsanime?", "different": "Welcher Anime ist am meisten unterschätzt (most underrated)?" },
+            { "general": "Welcher Anime hat die beste Story?", "different": "Welcher Anime hat die komplizierteste Story?" },
+            { "general": "Welcher Anime hatte die emotionalste Szene?", "different": "Welcher Anime hat am meisten zum Nachdenken angeregt?" },
+            { "general": "Welcher Anime hat die besten Kämpfe?", "different": "Welcher Anime hat die kreativsten Kampftechniken?" },
+            { "general": "Welcher Anime hat das beste Opening?", "different": "Welcher Anime hat das beste Ending?" },
+            { "general": "Welcher Anime hat den besten Soundtrack?", "different": "Welcher Anime hat den ikonischsten Titelsong?" },
+            { "general": "Welcher Anime ist der beste für Anfänger?", "different": "Welcher Anime ist nur für Hardcore-Fans geeignet?" },
+            { "general": "Welcher Anime ist am bekanntesten?", "different": "Welcher Anime hat die treueste Fanbase?" },
+            { "general": "Welcher Anime hatte den größten Hype?", "different": "Welcher Anime wurde am meisten überbewertet?" },
+            { "general": "Welcher Anime hat das beste Worldbuilding?", "different": "Welcher Anime hat die verrückteste Welt?" },
+            { "general": "Welcher Anime hat die besten Plot-Twists?", "different": "Welcher Anime war am schwersten vorhersehbar?" },
+            { "general": "Welcher Anime hat das beste Pacing (Tempo der Story)?", "different": "Welcher Anime hat die meisten unnötigen Filler?" },
+            { "general": "Welcher Anime hat die schönste Animation?", "different": "Welcher Anime hat den einzigartigsten Zeichenstil?" },
+            { "general": "Welcher Anime hat die besten Nebencharaktere?", "different": "Welcher Anime hat die nervigsten Nebencharaktere?" },
+            { "general": "Welcher Anime hat das beste Finale?", "different": "Welcher Anime hatte das enttäuschendste Ende?" },
+            { "general": "Welcher Anime wurde am meisten kopiert?", "different": "Welcher Anime hat das originellste Konzept?" },
+            { "general": "Welcher Anime ist für seine Brutalität bekannt?", "different": "Welcher Anime ist für seine psychologische Tiefe bekannt?" },
+            { "general": "Welcher Anime hat die lustigste Comedy?", "different": "Welcher Anime hat den besten schwarzen Humor?" },
+            { "general": "Welcher Anime hätte eine Fortsetzung verdient?", "different": "Welcher Anime hätte lieber nie eine Fortsetzung bekommen sollen?" },
+            { "general": "Welcher Anime hat die ikonischste Hauptfigur?", "different": "Welcher Anime hat den besten Cast an Nebenfiguren?" }
+        ],
+        "Anime Charaktere": [
+            { "general": "Wer ist der beste Anime-Protagonist?", "different": "Wer ist der nervigste Anime-Protagonist?" },
+            { "general": "Wer ist der coolste Anime-Antagonist?", "different": "Wer ist der furchteinflößendste Anime-Antagonist?" },
+            { "general": "Welcher Anime-Charakter hat die beste Entwicklung?", "different": "Welcher Anime-Charakter hätte eine bessere Entwicklung verdient?" },
+            { "general": "Welcher Anime-Charakter ist am schlauesten?", "different": "Welcher Anime-Charakter ist am manipulativsten?" },
+            { "general": "Welcher Charakter hat die stärkste Willenskraft?", "different": "Welcher Charakter gibt am schnellsten auf?" },
+            { "general": "Wer ist der lustigste Anime-Charakter?", "different": "Wer ist der größte Tollpatsch in Anime?" },
+            { "general": "Welcher Anime-Charakter hat die beste Synchronstimme?", "different": "Welcher Anime-Charakter hat die nervigste Stimme?" },
+            { "general": "Welcher Charakter hat das coolste Design?", "different": "Welcher Charakter hat das verrückteste Outfit?" },
+            { "general": "Wer ist der charismatischste Anime-Charakter?", "different": "Wer ist der beste Anführer in Anime?" },
+            { "general": "Welcher Charakter hat das beste Rivalitätsverhältnis?", "different": "Welcher Charakter ist von seinem Rivalen völlig besessen?" },
+            { "general": "Welcher Anime-Charakter hat den ikonischsten Spruch?", "different": "Welcher Anime-Charakter hat den nervigsten Catchphrase?" },
+            { "general": "Welcher Anime-Charakter hatte den besten Redemption-Arc (Wiedergutmachung)?", "different": "Welcher Anime-Charakter hätte niemals eine zweite Chance verdient?" },
+            { "general": "Wer ist der edelste und selbstloseste Anime-Charakter?", "different": "Wer ist der egoistischste Anime-Charakter?" },
+            { "general": "Welcher Anime-Charakter ist am emotionalsten?", "different": "Welcher Anime-Charakter ist am kältesten und emotionslosesten?" },
+            { "general": "Wer ist der mächtigste Anime-Charakter?", "different": "Wer ist der am meisten unterschätzte Anime-Charakter?" },
+            { "general": "Welcher Anime-Charakter hat die tragischste Hintergrundgeschichte?", "different": "Welcher Anime-Charakter hat die unnötigste Drama-Vergangenheit?" },
+            { "general": "Welcher Anime-Charakter hat das beste taktische Denken?", "different": "Welcher Anime-Charakter handelt am impulsivsten?" },
+            { "general": "Wer ist der treueste Freund in Anime?", "different": "Wer ist der größte Verräter in Anime?" },
+            { "general": "Welcher Anime-Charakter hat die beste Kampftechnik?", "different": "Welcher Anime-Charakter kämpft am kreativsten?" },
+            { "general": "Wer ist die interessanteste weibliche Anime-Figur?", "different": "Wer ist die am meisten übersexualisierte weibliche Anime-Figur?" }
+        ]
+};
+
+
+        let selectedQuestions = [];
+        let selectedCategory = "";
+        let chosenQuestion = null;
+        let randomDifferentPlayer = 0;
+        let currentPlayer = 0;
+
+        function loadCategories() {
+            let categorySelect = document.getElementById("categorySelect");
+            categorySelect.innerHTML = "";
+
+            for (let category in questions) {
+                let option = document.createElement("option");
+                option.value = category;
+                option.innerText = category;
+                categorySelect.appendChild(option);
+            }
+        }
+
+        function startGame() {
+            let category = document.getElementById("categorySelect").value;
+            if (!category) {
+                alert("Bitte eine Kategorie auswählen!");
+                return;
+            }
+
+            selectedCategory = category;
+            selectedQuestions = questions[category];
+            randomDifferentPlayer = Math.floor(Math.random() * 4);
+            currentPlayer = 0;
+            chosenQuestion = selectedQuestions[Math.floor(Math.random() * selectedQuestions.length)];
+
+            document.getElementById("setup").classList.add("hidden");
+            document.getElementById("game-container").classList.remove("hidden");
+        }
+
+        function assignQuestion() {
+            if (currentPlayer < 4) {
+                let question = (currentPlayer === randomDifferentPlayer) ? chosenQuestion.different : chosenQuestion.general;
+                
+                document.getElementById("question-display").innerText = "Deine Frage: " + question;
+                document.getElementById("question-display").classList.remove("hidden");
+                document.getElementById("next-btn").classList.remove("hidden");
+            } else {
+                alert("Alle Spieler haben ihre Fragen erhalten.");
+            }
+        }
+
+        function nextPlayer() {
+            currentPlayer++;
+
+            if (currentPlayer < 4) {
+                document.getElementById("question-display").classList.add("hidden");
+                document.getElementById("next-btn").classList.add("hidden");
+            } else {
+                document.getElementById("game-container").classList.add("hidden");
+                document.getElementById("answers").classList.remove("hidden");
+            }
+        }
+
+        function revealTruth() {
+            document.getElementById("final-reveal").innerText = "Spieler " + (randomDifferentPlayer + 1) + " hatte eine andere Frage!";
+            document.getElementById("final-reveal").classList.remove("hidden");
+        }
+
+        loadCategories();
+    </script>
+</body>
+</html>
