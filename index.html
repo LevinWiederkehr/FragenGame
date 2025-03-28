@@ -82,7 +82,7 @@
         let currentPlayer = 0;
         let generalQuestion = "";
         let differentQuestion = "";
-        let randomDifferentPlayer = Math.floor(Math.random() * 3);
+        let randomDifferentPlayer = Math.floor(Math.random() * 4);
 
         function startGame() {
             generalQuestion = document.getElementById("generalQuestion").value;
@@ -96,7 +96,7 @@
         }
 
         function assignQuestions() {
-            if (currentPlayer < 3) {
+            if (currentPlayer < 4) {
                 let question = (currentPlayer === randomDifferentPlayer) ? differentQuestion : generalQuestion;
                 document.getElementById("question-display").innerText = "Deine Frage: " + question;
                 document.getElementById("question-display").classList.remove("hidden");
@@ -110,7 +110,7 @@
             players.push({ player: currentPlayer + 1, answer: "Antwort übersprungen" });
             currentPlayer++;
 
-            if (currentPlayer < 3) {
+            if (currentPlayer < 4) {
                 document.getElementById("question-display").classList.add("hidden");
                 document.getElementById("answer-btn").classList.add("hidden");
             } else {
