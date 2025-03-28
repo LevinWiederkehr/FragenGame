@@ -96,7 +96,7 @@
         }
 
         function assignQuestions() {
-            if (currentPlayer < 4) {
+            if (currentPlayer < 3) {
                 let question = (currentPlayer === randomDifferentPlayer) ? differentQuestion : generalQuestion;
                 document.getElementById("question-display").innerText = "Deine Frage: " + question;
                 document.getElementById("question-display").classList.remove("hidden");
@@ -110,7 +110,7 @@
             players.push({ player: currentPlayer + 1, answer: "Antwort übersprungen" });
             currentPlayer++;
 
-            if (currentPlayer < 4) {
+            if (currentPlayer < 3) {
                 document.getElementById("question-display").classList.add("hidden");
                 document.getElementById("answer-btn").classList.add("hidden");
             } else {
