@@ -1,0 +1,47 @@
+{
+    "Anime Allgemein": [
+        { "general": "Was ist dein Lieblingsanime?", "different": "Welcher Anime ist am meisten unterschätzt (most underrated)?" },
+        { "general": "Welcher Anime hat die beste Story?", "different": "Welcher Anime hat die komplizierteste Story?" },
+        { "general": "Welcher Anime hatte die emotionalste Szene?", "different": "Welcher Anime hat am meisten zum Nachdenken angeregt?" },
+        { "general": "Welcher Anime hat die besten Kämpfe?", "different": "Welcher Anime hat die kreativsten Kampftechniken?" },
+        { "general": "Welcher Anime hat das beste Opening?", "different": "Welcher Anime hat das beste Ending?" },
+        { "general": "Welcher Anime hat den besten Soundtrack?", "different": "Welcher Anime hat den ikonischsten Titelsong?" },
+        { "general": "Welcher Anime ist der beste für Anfänger?", "different": "Welcher Anime ist nur für Hardcore-Fans geeignet?" },
+        { "general": "Welcher Anime ist am bekanntesten?", "different": "Welcher Anime hat die treueste Fanbase?" },
+        { "general": "Welcher Anime hatte den größten Hype?", "different": "Welcher Anime wurde am meisten überbewertet?" },
+        { "general": "Welcher Anime hat das beste Worldbuilding?", "different": "Welcher Anime hat die verrückteste Welt?" },
+        { "general": "Welcher Anime hat die besten Plot-Twists?", "different": "Welcher Anime war am schwersten vorhersehbar?" },
+        { "general": "Welcher Anime hat das beste Pacing (Tempo der Story)?", "different": "Welcher Anime hat die meisten unnötigen Filler?" },
+        { "general": "Welcher Anime hat die schönste Animation?", "different": "Welcher Anime hat den einzigartigsten Zeichenstil?" },
+        { "general": "Welcher Anime hat die besten Nebencharaktere?", "different": "Welcher Anime hat die nervigsten Nebencharaktere?" },
+        { "general": "Welcher Anime hat das beste Finale?", "different": "Welcher Anime hatte das enttäuschendste Ende?" },
+        { "general": "Welcher Anime wurde am meisten kopiert?", "different": "Welcher Anime hat das originellste Konzept?" },
+        { "general": "Welcher Anime ist für seine Brutalität bekannt?", "different": "Welcher Anime ist für seine psychologische Tiefe bekannt?" },
+        { "general": "Welcher Anime hat die lustigste Comedy?", "different": "Welcher Anime hat den besten schwarzen Humor?" },
+        { "general": "Welcher Anime hätte eine Fortsetzung verdient?", "different": "Welcher Anime hätte lieber nie eine Fortsetzung bekommen sollen?" },
+        { "general": "Welcher Anime hat die ikonischste Hauptfigur?", "different": "Welcher Anime hat den besten Cast an Nebenfiguren?" }
+
+   ],
+    "Anime Charaktere": [
+		{ "general": "Wer ist der beste Anime-Protagonist?", "different": "Wer ist der nervigste Anime-Protagonist?" },
+        { "general": "Wer ist der coolste Anime-Antagonist?", "different": "Wer ist der furchteinflößendste Anime-Antagonist?" },
+        { "general": "Welcher Anime-Charakter hat die beste Entwicklung?", "different": "Welcher Anime-Charakter hätte eine bessere Entwicklung verdient?" },
+        { "general": "Welcher Anime-Charakter ist am schlauesten?", "different": "Welcher Anime-Charakter ist am manipulativsten?" },
+        { "general": "Welcher Charakter hat die stärkste Willenskraft?", "different": "Welcher Charakter gibt am schnellsten auf?" },
+        { "general": "Wer ist der lustigste Anime-Charakter?", "different": "Wer ist der größte Tollpatsch in Anime?" },
+        { "general": "Welcher Anime-Charakter hat die beste Synchronstimme?", "different": "Welcher Anime-Charakter hat die nervigste Stimme?" },
+        { "general": "Welcher Charakter hat das coolste Design?", "different": "Welcher Charakter hat das verrückteste Outfit?" },
+        { "general": "Wer ist der charismatischste Anime-Charakter?", "different": "Wer ist der beste Anführer in Anime?" },
+        { "general": "Welcher Charakter hat das beste Rivalitätsverhältnis?", "different": "Welcher Charakter ist von seinem Rivalen völlig besessen?" },
+        { "general": "Welcher Anime-Charakter hat den ikonischsten Spruch?", "different": "Welcher Anime-Charakter hat den nervigsten Catchphrase?" },
+        { "general": "Welcher Anime-Charakter hatte den besten Redemption-Arc (Wiedergutmachung)?", "different": "Welcher Anime-Charakter hätte niemals eine zweite Chance verdient?" },
+        { "general": "Wer ist der edelste und selbstloseste Anime-Charakter?", "different": "Wer ist der egoistischste Anime-Charakter?" },
+        { "general": "Welcher Anime-Charakter ist am emotionalsten?", "different": "Welcher Anime-Charakter ist am kältesten und emotionslosesten?" },
+        { "general": "Wer ist der mächtigste Anime-Charakter?", "different": "Wer ist der am meisten unterschätzte Anime-Charakter?" },
+        { "general": "Welcher Anime-Charakter hat die tragischste Hintergrundgeschichte?", "different": "Welcher Anime-Charakter hat die unnötigste Drama-Vergangenheit?" },
+        { "general": "Welcher Anime-Charakter hat das beste taktische Denken?", "different": "Welcher Anime-Charakter handelt am impulsivsten?" },
+        { "general": "Wer ist der treueste Freund in Anime?", "different": "Wer ist der größte Verräter in Anime?" },
+        { "general": "Welcher Anime-Charakter hat die beste Kampftechnik?", "different": "Welcher Anime-Charakter kämpft am kreativsten?" },
+        { "general": "Wer ist die interessanteste weibliche Anime-Figur?", "different": "Wer ist die am meisten übersexualisierte weibliche Anime-Figur?" }
+        ]
+}
